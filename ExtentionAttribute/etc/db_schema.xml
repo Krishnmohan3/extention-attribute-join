@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Webkul Software.
+ *
+ * @category  Webkul
+ * @package   Webkul_ExtentionAttribute
+ * @author    Webkul Software Private Limited
+ * @copyright Webkul Software Private Limited (https://webkul.com)
+ * @license   https://store.webkul.com/license.html
+ */
+-->
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"       xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="custom_table" engine="innodb">
+        <column xsi:type="int" name="order_id"  padding="10" unsigned="true" nullable="false"/>
+        <column xsi:type="varchar" name="custom_col1" nullable="false" default="First"/>
+        <column xsi:type="varchar" name="custom_col2" nullable="false" default="Second"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="order_id"/>
+        </constraint>
+        <constraint xsi:type="foreign" referenceId="CUSTOM_TABLE_ORDER_ID_SALES_ORDER_ENTITY_ID"
+                table="custom_table" column="order_id" referenceTable="sales_order"
+                referenceColumn="entity_id" onDelete="CASCADE"/>
+    </table>
+</schema>
